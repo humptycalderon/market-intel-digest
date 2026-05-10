@@ -1,0 +1,23 @@
+# Environment — never commit tokens or keys
+.env
+*.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# macOS
+.DS_Store
+logs/
+
+# Generated digest output
+digest_*.md
