@@ -21,3 +21,4 @@ logs/
 
 # Generated digest output
 digest_*.md
+dev_report_*.md

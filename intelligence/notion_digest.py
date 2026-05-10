@@ -83,9 +83,10 @@ def _markdown_to_blocks(markdown):
     return blocks
 
 
-def push(briefing, run_date=None, token=None, parent_page_id=None):
+def push(briefing, run_date=None, token=None, parent_page_id=None, title_prefix=None):
     """
     Create a new Notion page with the briefing content.
+    title_prefix overrides the default "Market Intelligence" title prefix.
     Returns the new page URL or None on failure.
     """
     token = token or os.getenv("NOTION_TOKEN")
@@ -102,11 +103,12 @@ def push(briefing, run_date=None, token=None, parent_page_id=None):
         return None
 
     run_date = run_date or date.today().isoformat()
-    title = f"Market Intelligence — {run_date}"
+    prefix = title_prefix or "Market Intelligence"
+    title = f"{prefix} — {run_date}"
 
     content_blocks = [
         _text_block(
-            f"Auto-generated market intelligence briefing for {run_date}. "
+            f"Auto-generated {prefix.lower()} for {run_date}. "
             "Sources: Hacker News, arXiv, AI newsletters.",
             bold=False,
         ),
