@@ -103,7 +103,7 @@ def synthesize(items, digest_dir=".", api_key=None):
         log.error("ANTHROPIC_API_KEY not set — cannot synthesize report")
         return None
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key, timeout=120.0)
     digest_text = _load_latest_digest(digest_dir)
     signals_text = _format_signals(items)
 

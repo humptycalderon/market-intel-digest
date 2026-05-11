@@ -117,7 +117,7 @@ def synthesize(items, api_key=None):
         log.error("ANTHROPIC_API_KEY not set — cannot synthesize briefing")
         return None
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key, timeout=120.0)
 
     signals = _format_signals(items)
     if not signals.strip():

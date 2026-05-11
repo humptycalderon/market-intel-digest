@@ -47,7 +47,7 @@ def fetch(days_back=14, min_points=2, max_per_query=15):
                     "tags": tag,
                     "hitsPerPage": max_per_query,
                     "numericFilters": f"points>={min_points},created_at_i>{cutoff}",
-                }, timeout=10)
+                }, timeout=8)
                 resp.raise_for_status()
                 hits = resp.json().get("hits", [])
                 for h in hits:
@@ -66,6 +66,8 @@ def fetch(days_back=14, min_points=2, max_per_query=15):
                         "date": h.get("created_at", ""),
                         "query": query,
                     })
+            except requests.exceptions.Timeout:
+                log.warning(f"HN query '{query}' ({tag}) timed out — skipping")
             except Exception as e:
                 log.warning(f"HN query '{query}' ({tag}) failed: {e}")
             time.sleep(0.3)
