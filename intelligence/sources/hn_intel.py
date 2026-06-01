@@ -13,16 +13,24 @@ log = logging.getLogger(__name__)
 ALGOLIA_API = "https://hn.algolia.com/api/v1/search"
 
 QUERIES = [
+    # Agent evaluation — primary focus
+    "agent evaluation framework",
+    "LLM agent benchmark",
+    "agentic workflow evaluation",
+    "agent trajectory evaluation",
+    "multi-step agent testing",
+    "agent output verification human",
+    # RLHF / LLM evaluation — foundation
     "RLHF human feedback",
     "model evaluation benchmark",
     "AI training data quality",
-    "reinforcement learning human feedback",
-    "LLM fine-tuning data",
-    "AI alignment data",
     "reward model training",
     "human preference data",
     "AI data annotation quality",
-    "model benchmarking evaluation",
+    # Physical AI / robotics — subset
+    "physical AI agent evaluation",
+    "embodied AI benchmark",
+    "robot policy evaluation",
 ]
 
 def _days_ago(n):
